@@ -1,12 +1,14 @@
-FROM node:lts-alpine
+FROM node:8.12-alpine
+
+RUN npm install -g http-server
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm install
 
-RUN npm run build
+COPY . .
 
 EXPOSE 8080
 
